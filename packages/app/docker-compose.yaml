@@ -7,7 +7,7 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: marofa20
+      POSTGRES_PASSWORD: exemplo
     ports:
       - "5432:5432"
 
