@@ -1,4 +1,4 @@
-export POSTGRES_HOST=localhost
-export POSTGRES_PORT=5432
-export POSTGRES_USER=postgres
-export POSTGRES_PASSWORD=admin
+export Host=localhost
+export Port=5432
+export User=postgres
+export Password=admin
