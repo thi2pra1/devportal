@@ -29,10 +29,10 @@ backend:
     # config options: https://node-postgres.com/api/client
     client: pg
     connection:
-      host: ${POSTGRES_HOST}
-      port: ${POSTGRES_PORT}
-      user: ${POSTGRES_USER}
-      password: ${POSTGRES_PASSWORD}
+      host: ${Host}
+      port: ${Port}
+      user: ${User}
+      password: ${Password}
     #  # https://node-postgres.com/features/ssl
     #  #ssl: require # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
     #    #ca: # if you have a CA file and want to verify it you can uncomment this section
