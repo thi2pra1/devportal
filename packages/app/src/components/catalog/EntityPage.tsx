@@ -68,8 +68,16 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
-import { EntityGithubPullRequestsContent } from '@roadiehq/backstage-plugin-github-pull-requests';
-import { EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { 
+  EntityGithubPullRequestsContent,
+  EntityGithubPullRequestsOverviewCard
+} from '@roadiehq/backstage-plugin-github-pull-requests';
+
+import {
+  EntityTravisCIContent,
+  EntityTravisCIOverviewCard,
+  isTravisciAvailable,
+} from '@roadiehq/backstage-plugin-travis-ci';
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -78,22 +86,16 @@ const cicdContent = (
     <EntitySwitch.Case if={isGithubActionsAvailable}>
       <EntityGithubActionsContent />
     </EntitySwitch.Case>
+    <EntitySwitch.Case if={isTravisciAvailable}>
+      <EntityTravisCIContent />
+    </EntitySwitch.Case>
+  </EntitySwitch>
+);
 
-    <EntitySwitch.Case>
-      <EmptyState
-        title="No CI/CD available for this entity"
-        missing="info"
-        description="You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below."
-        action={
-          <Button
-            variant="contained"
-            color="primary"
-            href="https://backstage.io/docs/features/software-catalog/well-known-annotations"
-          >
-            Read more
-          </Button>
-        }
-      />
+export const cicdCard = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={isTravisciAvailable}>
+      <EntityTravisCIOverviewCard />
     </EntitySwitch.Case>
   </EntitySwitch>
 );
