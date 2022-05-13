@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Button, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
@@ -41,10 +41,10 @@ import {
   hasCatalogProcessingErrors,
   isOrphan,
 } from '@backstage/plugin-catalog';
-import {
+/* import {
   isGithubActionsAvailable,
   EntityGithubActionsContent,
-} from '@backstage/plugin-github-actions';
+} from '@backstage/plugin-github-actions'; */
 import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
@@ -52,7 +52,6 @@ import {
   EntityOwnershipCard,
 } from '@backstage/plugin-org';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
-import { EmptyState } from '@backstage/core-components';
 import {
   Direction,
   EntityCatalogGraphCard,
@@ -80,22 +79,19 @@ import {
 } from '@roadiehq/backstage-plugin-travis-ci';
 
 const cicdContent = (
-  // This is an example of how you can implement your company's logic in entity page.
-  // You can for example enforce that all components of type 'service' should use GitHubActions
   <EntitySwitch>
-    <EntitySwitch.Case if={isGithubActionsAvailable}>
-      <EntityGithubActionsContent />
-    </EntitySwitch.Case>
     <EntitySwitch.Case if={isTravisciAvailable}>
       <EntityTravisCIContent />
     </EntitySwitch.Case>
   </EntitySwitch>
 );
 
-export const cicdCard = (
+const cicdCard = (
   <EntitySwitch>
-    <EntitySwitch.Case if={isTravisciAvailable}>
-      <EntityTravisCIOverviewCard />
+    <EntitySwitch.Case if={isTravisciAvailable }>
+      <Grid item sm={6}>
+        <EntityTravisCIOverviewCard />
+      </Grid>
     </EntitySwitch.Case>
   </EntitySwitch>
 );
@@ -140,6 +136,8 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityGithubPullRequestsOverviewCard />
     </Grid>
+
+    {cicdCard}
 
   </Grid>
 );
