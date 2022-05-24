@@ -77,7 +77,7 @@ travisci:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'local' # Alternatives - 'local'
+    runIn: 'docker' # Alternatives - 'local'
     #dockerImage: 'spotify/techdocs'
     #pullImage: true
   publisher:
