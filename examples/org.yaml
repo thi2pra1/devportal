@@ -15,3 +15,13 @@ metadata:
 spec:
   type: team
   children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: thi2pra1
+spec:
+  profile:
+    displayName: ...
+    email: ...
+  memberOf: [guests]
